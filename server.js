@@ -88,6 +88,20 @@ app.get('/api/model-versions', async (req, res) => {
     }
 });
 
+// Ruta raíz
+app.get('/', (req, res) => {
+    res.json({
+        message: 'API de Autos - HubsAutos',
+        version: '1.0.0',
+        endpoints: {
+            brands: '/api/brands',
+            modelVersions: '/api/model-versions',
+            health: '/health'
+        },
+        description: 'API para consultar marcas, modelos y versiones de autos desde MongoDB'
+    });
+});
+
 // Ruta de salud
 app.get('/health', (req, res) => {
     res.json({ status: 'OK', timestamp: new Date().toISOString() });
